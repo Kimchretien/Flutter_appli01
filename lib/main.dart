@@ -64,7 +64,7 @@ class HomePageState extends State<HomePage> {
   }
 }
 
-<<<<<<< HEAD
+
 //      floatingActionButton: Column(
 //   mainAxisSize: MainAxisSize.min,//pour que la colonne prenne la taille minimale necessaire
 //   children: [  //ajout des boutons dans une colonne
@@ -124,6 +124,3 @@ class HomePageState extends State<HomePage> {
 //       ),
 
       
-
-=======
->>>>>>> d6dec6c2572ac2ef0758a289309d7fd917d1fada
