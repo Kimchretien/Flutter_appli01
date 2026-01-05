@@ -1,127 +1,103 @@
  import 'package:flutter/material.dart';
+ import 'package:appli01/pages/actus.dart';
+ import 'package:appli01/pages/communautes.dart';
+ import 'package:appli01/pages/Appels.dart';
+ import 'package:appli01/pages/discussions.dart';
 
 
 void main() {
   // Entry point of the application
   runApp( MaterialApp(
+    theme: ThemeData(
+      colorSchemeSeed: Colors.green,
+      scaffoldBackgroundColor: Colors.white
+
+    ),
     home: HomePage(),
+    debugShowCheckedModeBanner: false,
   ));
 }
 
 
 
 
-// class HomePage extends StatefulWidget{
-//   const HomePage({super.key});
-//   @override
-//   State<HomePage> createState() => HomePageState();
-//   //ou createState(){ return HomePageState();} 
-// }
+class HomePage extends StatefulWidget{
+  const HomePage({super.key});
+  @override
+  State<HomePage> createState() => HomePageState();
+  //ou createState(){ return HomePageState();} 
+}
 
- 
+ //navigationBar de WhatsApp
 
-class HomePage extends StatelessWidget{
-  HomePage({super.key});
+class HomePageState extends State<HomePage>{
 
-  final images = [
-    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
-    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
-    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
-    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
-    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
-    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
+ final pages=[
+    DiscussionsPage(),
+    ActusPage(),
+    CommunautesPage(),
+    AppelsPage(),
   ];
+
+  int pagesIndex=0;
 
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(title: Text("column"),elevation: 16,centerTitle: true,),
-      body: ListView.separated(
-        itemCount: images.length,
-        itemBuilder: (context,index){
-          return Container(
-            margin: EdgeInsets.all(10),
-            child: Image.network(images[index])
-          );
-        },
-        separatorBuilder: (context,index){
-          return Divider(
-            color: Colors.blue,
-            thickness: 2, //epaisseur du diviseur
-          );
-        },
-      )
 
-      // ListView.builder(
-      //   itemCount: images.length,
-      //   itemBuilder: (context,index){
-      //     return Container(
-      //       margin: EdgeInsets.all(10),
-      //       child: Image.network(images[index])
-      //     );
+      body: ListView(
+        children: [
+       ElevatedButton(
+
+      child: Text('Bouton  avec Elevation'),
+      onPressed: (){
+
+      },
+       ),
+       OutlinedButton(onPressed: (){}, child: Text("Boutton avec contour")),
+        TextButton(onPressed: (){}, child: Text("Boutton simple")),
+        IconButton(onPressed: (){}, icon: Icon(Icons.home))
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){},
+        child: Icon(Icons.add),
+      ),
+      // body: pages[pagesIndex],
+      // bottomNavigationBar: Container(
+      //   decoration: BoxDecoration(
+      //     border: Border(
+      //       top: BorderSide(color: Colors.grey, width: 0.2)
+      //     )
+      //   ),
+      //   child: NavigationBar(
+      //   selectedIndex: pagesIndex,
+      //   onDestinationSelected: (int index){
+      //     setState(() {
+      //       pagesIndex=index;
+      //     });
+
       //   },
+      //   backgroundColor: Colors.white,
+      //   destinations: [
+      //     NavigationDestination(
+      //       icon: Icon(Icons.chat),
+      //        label: "Discussions"),
+      //        NavigationDestination(
+      //       icon: Icon(Icons.filter_tilt_shift),
+      //        label: "Actus"),
+      //        NavigationDestination(
+      //       icon: Icon(Icons.groups),
+      //        label: "communautes"),
+      //        NavigationDestination(
+      //       icon: Icon(Icons.call),
+      //        label: "Appels"),
+
+      //   ],
+      // ),
       // )
+
+  
       );
   }
 }
-//      floatingActionButton: Column(
-//   mainAxisSize: MainAxisSize.min,//pour que la colonne prenne la taille minimale necessaire
-//   children: [  //ajout des boutons dans une colonne
-//     FloatingActionButton(
-//       heroTag: "btnAdd",  //pour identifier chaque bouton flottant de maniere unique
-//       onPressed: () {
-//         setState(() {
-//           counter++;
-//         });
-//       },
-//       child: Icon(Icons.add),
-//     ),
-//     SizedBox(height: 10),
-//     FloatingActionButton(
-//       heroTag: "btnRemove",
-//       onPressed: () {
-//         setState(() {
-//           counter--;
-//         });
-//       },
-//       child: Icon(Icons.remove),
-//     ),
-//     SizedBox(height: 10),
-//     FloatingActionButton(
-//       heroTag: "btnReset",
-//       onPressed: () {
-//         setState(() {
-//           counter = 0;
-//         });
-//       },
-//       child: Icon(Icons.refresh),
-//     ),
-//   ],
-// ),
-
-
-//  Container(
-  
-//         alignment: Alignment.topLeft,
-//         padding: EdgeInsets.only(top: 50,left: 30,right: 90,bottom: 10), //espsace interne //couleur de fond
-//         margin: EdgeInsets.all(20), //espace externe
-//         height: 200, //hauteur du container
-//         width: 300, //largeur du container
-//         decoration: BoxDecoration(
-
-//           color: Colors.blue, //couleur de fond
-//           borderRadius: BorderRadius.circular(12), //bordure arrondie
-//         ),
-//               child: Text(
-//     'Compteur : $counter\n${getMessage()}',
-//   textAlign: TextAlign.center,
-//   style: TextStyle(
-//     fontSize: 24,
-//     color: getColor(),
-//   ),
-// ),   
-//       ),
-
-      
-
-
